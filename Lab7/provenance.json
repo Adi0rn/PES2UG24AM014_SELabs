@@ -1,0 +1,26 @@
+{
+  "student": "Adithya Ajith Pillai",
+  "srn": "PES2UG24AM014",
+  "upstream": "https://github.com/SETAPESU26/L6_L7_12_cloud_storage_tier",
+  "source_tree_sha": "3d3a798a451777c4300706166f7be1c8b3e13859",
+  "source_paths": [
+    "Lab 7/processor.py",
+    "Lab 7/test_processor.py"
+  ],
+  "note": "Original source logic retained in Lab6. Text snapshots normalize line endings to LF.",
+  "python": "3.12.10",
+  "pytest": "9.2.0",
+  "coverage": "7.6.12",
+  "hypothesis": "6.125.3",
+  "measurement_environment": "Official tagged coverage.py and Hypothesis Python sources; coverage pure-Python tracer.",
+  "official_dependency_sources": {
+    "coverage": "https://github.com/coveragepy/coveragepy/tree/7.6.12",
+    "hypothesis": "https://github.com/HypothesisWorks/hypothesis/tree/hypothesis-python-6.125.3",
+    "sortedcontainers": "https://github.com/grantjenks/python-sortedcontainers/tree/v2.4.0"
+  },
+  "sha256": {
+    "processor.py": "9dbd8049ab4294224974f37e4b9ee24233cc7a0c5b8cfe3246d57871d5271c93",
+    "replay_before.py": "782861a14775c787b1491346b027268bc27c5c9d516c255cd138eb4154a60943",
+    "test_processor.py": "81cab697d71bbaa3768567d7a28aaf3d7028507745cb21659d5024f3c4a8e7ab"
+  }
+}

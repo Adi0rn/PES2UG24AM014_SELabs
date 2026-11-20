@@ -1,0 +1,9 @@
+PS> python processor.py
+Input supplied (one line per prompt): 'bad\n1:0\nUNKNOWN\n'
+==== Running parse_storage_quota ====
+Enter quota (e.g. 500MB, 10GB, 2TB): Invalid input.
+==== Running compute_compression_ratio ====
+Enter raw:compressed bytes (e.g. 1024:256): Invalid input.
+==== Running lookup_bandwidth_tier_rate ====
+Enter tier descriptor (e.g. HOT_TIER, COLD, ARCHIVE): Invalid input.
+[Exit code: 0]

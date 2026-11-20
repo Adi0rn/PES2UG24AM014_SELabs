@@ -1,0 +1,65 @@
+PS> python -m pytest -p hypothesis.extra.pytestplugin test_processor.py -q --tb=short --hypothesis-show-statistics
+..........................................................                                             [100%]
+=========================================== Hypothesis Statistics ===========================================
+test_processor.py::test_parse_storage_quota_no_crash:
+
+  - during generate phase (0.24 seconds):
+    - Typical runtimes: < 1ms, of which < 1ms in data generation
+    - 300 passing examples, 0 failing examples, 60 invalid examples
+    - Events:
+      * 15.56%, Retried draw from text(characters(codec='utf-8', categories=('Zl', 'Zp', 'Co', 'Me', 'Pc', 'Zs', 'Lt', 'Pf', 'Pi', 'Nl', 'Pd', 'Cf', 'Sc', 'Sk', 'Nd', 'Sm', 'Lm', 'No', 'Pe', 'Ps', 'Mc', 'So', 'Po', 'Mn', 'Lo', 'Lu', 'Ll', 'Cn', 'Cc')), max_size=5).filter(not_yet_in_unique_list) to satisfy filter
+
+  - Stopped because settings.max_examples=300
+
+
+test_processor.py::test_compute_compression_ratio_safe:
+
+  - during generate phase (0.19 seconds):
+    - Typical runtimes: < 1ms, of which < 1ms in data generation
+    - 300 passing examples, 0 failing examples, 48 invalid examples
+    - Events:
+      * 10.63%, Retried draw from text(characters(codec='utf-8', categories=('Zl', 'Zp', 'Co', 'Me', 'Pc', 'Zs', 'Lt', 'Pf', 'Pi', 'Nl', 'Pd', 'Cf', 'Sc', 'Sk', 'Nd', 'Sm', 'Lm', 'No', 'Pe', 'Ps', 'Mc', 'So', 'Po', 'Mn', 'Lo', 'Lu', 'Ll', 'Cn', 'Cc')), max_size=5).filter(not_yet_in_unique_list) to satisfy filter
+
+  - Stopped because settings.max_examples=300
+
+
+test_processor.py::test_lookup_bandwidth_tier_rate_safe:
+
+  - during generate phase (0.20 seconds):
+    - Typical runtimes: < 1ms, of which < 1ms in data generation
+    - 300 passing examples, 0 failing examples, 48 invalid examples
+    - Events:
+      * 17.82%, Retried draw from text(characters(codec='utf-8', categories=('Zl', 'Zp', 'Co', 'Me', 'Pc', 'Zs', 'Lt', 'Pf', 'Pi', 'Nl', 'Pd', 'Cf', 'Sc', 'Sk', 'Nd', 'Sm', 'Lm', 'No', 'Pe', 'Ps', 'Mc', 'So', 'Po', 'Mn', 'Lo', 'Lu', 'Ll', 'Cn', 'Cc')), max_size=5).filter(not_yet_in_unique_list) to satisfy filter
+
+  - Stopped because settings.max_examples=300
+
+
+test_processor.py::test_valid_quota_conversion:
+
+  - during generate phase (0.13 seconds):
+    - Typical runtimes: < 1ms, of which < 1ms in data generation
+    - 300 passing examples, 0 failing examples, 0 invalid examples
+
+  - Stopped because settings.max_examples=300
+
+
+test_processor.py::test_valid_ratio_math:
+
+  - during generate phase (0.15 seconds):
+    - Typical runtimes: < 1ms, of which < 1ms in data generation
+    - 300 passing examples, 0 failing examples, 0 invalid examples
+
+  - Stopped because settings.max_examples=300
+
+
+test_processor.py::test_zero_denominator_rejected:
+
+  - during generate phase (0.10 seconds):
+    - Typical runtimes: < 1ms, of which < 1ms in data generation
+    - 300 passing examples, 0 failing examples, 0 invalid examples
+
+  - Stopped because settings.max_examples=300
+
+
+58 passed in 1.14s
+[Exit code: 0]

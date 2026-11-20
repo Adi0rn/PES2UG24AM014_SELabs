@@ -1,0 +1,231 @@
+PS> python -m pytest -p hypothesis.extra.pytestplugin test_processor.py -q --tb=short --hypothesis-show-statistics -k "no_crash or compression_ratio_safe or bandwidth_tier_rate_safe"
+FFF                                                                                                    [100%]
+================================================= FAILURES ==================================================
+_____________________________________ test_parse_storage_quota_no_crash _____________________________________
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\test_processor.py", line 20, in test_parse_storage_quota_no_crash
+  |     def test_parse_storage_quota_no_crash(value):
+  |                    ^^^
+  | BaseExceptionGroup: Hypothesis found 2 distinct failures. (2 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\test_processor.py", line 22, in test_parse_storage_quota_no_crash
+    |     result = parse_storage_quota(value)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\processor.py", line 9, in parse_storage_quota
+    |     value = int(val_str)
+    |             ^^^^^^^^^^^^
+    | ValueError: invalid literal for int() with base 10: ''
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\test_processor.py", line 24, in test_parse_storage_quota_no_crash
+    |     pytest.fail(f'quota crashed for {value!r}: {type(exc).__name__}: {exc}')
+    | Failed: quota crashed for '': ValueError: invalid literal for int() with base 10: ''
+    | Falsifying example: test_parse_storage_quota_no_crash(
+    |     value='',  # or any other generated value
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\test_processor.py", line 22, in test_parse_storage_quota_no_crash
+    |     result = parse_storage_quota(value)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\processor.py", line 6, in parse_storage_quota
+    |     cleaned = quota_str.strip().upper()
+    |               ^^^^^^^^^^^^^^^
+    | AttributeError: 'NoneType' object has no attribute 'strip'
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\test_processor.py", line 24, in test_parse_storage_quota_no_crash
+    |     pytest.fail(f'quota crashed for {value!r}: {type(exc).__name__}: {exc}')
+    | Failed: quota crashed for None: AttributeError: 'NoneType' object has no attribute 'strip'
+    | Falsifying example: test_parse_storage_quota_no_crash(
+    |     value=None,  # or any other generated value
+    | )
+    +------------------------------------
+____________________________________ test_compute_compression_ratio_safe ____________________________________
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\test_processor.py", line 36, in test_compute_compression_ratio_safe
+  |     def test_compute_compression_ratio_safe(value):
+  |                    ^^^
+  | BaseExceptionGroup: Hypothesis found 4 distinct failures. (4 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\test_processor.py", line 38, in test_compute_compression_ratio_safe
+    |     result = compute_compression_ratio(value)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\processor.py", line 23, in compute_compression_ratio
+    |     raw_str, comp_str = size_metric_str.split(':')
+    |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    | TypeError: a bytes-like object is required, not 'str'
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\test_processor.py", line 40, in test_compute_compression_ratio_safe
+    |     pytest.fail(f'ratio crashed for {value!r}: {type(exc).__name__}: {exc}')
+    | Failed: ratio crashed for b'': TypeError: a bytes-like object is required, not 'str'
+    | Falsifying example: test_compute_compression_ratio_safe(
+    |     value=b'',
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\test_processor.py", line 38, in test_compute_compression_ratio_safe
+    |     result = compute_compression_ratio(value)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\processor.py", line 24, in compute_compression_ratio
+    |     raw_bytes = float(raw_str)
+    |                 ^^^^^^^^^^^^^^
+    | ValueError: could not convert string to float: ''
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\test_processor.py", line 40, in test_compute_compression_ratio_safe
+    |     pytest.fail(f'ratio crashed for {value!r}: {type(exc).__name__}: {exc}')
+    | Failed: ratio crashed for ':': ValueError: could not convert string to float: ''
+    | Falsifying example: test_compute_compression_ratio_safe(
+    |     value=':',
+    | )
+    +---------------- 3 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\test_processor.py", line 38, in test_compute_compression_ratio_safe
+    |     result = compute_compression_ratio(value)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\processor.py", line 23, in compute_compression_ratio
+    |     raw_str, comp_str = size_metric_str.split(':')
+    |     ^^^^^^^^^^^^^^^^^
+    | ValueError: not enough values to unpack (expected 2, got 1)
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\test_processor.py", line 40, in test_compute_compression_ratio_safe
+    |     pytest.fail(f'ratio crashed for {value!r}: {type(exc).__name__}: {exc}')
+    | Failed: ratio crashed for '': ValueError: not enough values to unpack (expected 2, got 1)
+    | Falsifying example: test_compute_compression_ratio_safe(
+    |     value='',
+    | )
+    +---------------- 4 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\test_processor.py", line 38, in test_compute_compression_ratio_safe
+    |     result = compute_compression_ratio(value)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\processor.py", line 23, in compute_compression_ratio
+    |     raw_str, comp_str = size_metric_str.split(':')
+    |                         ^^^^^^^^^^^^^^^^^^^^^
+    | AttributeError: 'NoneType' object has no attribute 'split'
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\test_processor.py", line 40, in test_compute_compression_ratio_safe
+    |     pytest.fail(f'ratio crashed for {value!r}: {type(exc).__name__}: {exc}')
+    | Failed: ratio crashed for None: AttributeError: 'NoneType' object has no attribute 'split'
+    | Falsifying example: test_compute_compression_ratio_safe(
+    |     value=None,  # or any other generated value
+    | )
+    +------------------------------------
+___________________________________ test_lookup_bandwidth_tier_rate_safe ____________________________________
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\test_processor.py", line 46, in test_lookup_bandwidth_tier_rate_safe
+  |     def test_lookup_bandwidth_tier_rate_safe(value):
+  |                    ^^^
+  | BaseExceptionGroup: Hypothesis found 2 distinct failures. (2 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\test_processor.py", line 48, in test_lookup_bandwidth_tier_rate_safe
+    |     result = lookup_bandwidth_tier_rate(value)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\processor.py", line 40, in lookup_bandwidth_tier_rate
+    |     return tier_rates[prefix]
+    |            ~~~~~~~~~~^^^^^^^^
+    | KeyError: ''
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\test_processor.py", line 50, in test_lookup_bandwidth_tier_rate_safe
+    |     pytest.fail(f'tier crashed for {value!r}: {type(exc).__name__}: {exc}')
+    | Failed: tier crashed for '': KeyError: ''
+    | Falsifying example: test_lookup_bandwidth_tier_rate_safe(
+    |     value='',  # or any other generated value
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\test_processor.py", line 48, in test_lookup_bandwidth_tier_rate_safe
+    |     result = lookup_bandwidth_tier_rate(value)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\processor.py", line 34, in lookup_bandwidth_tier_rate
+    |     prefix = tier_descriptor.strip().upper()[:3]
+    |              ^^^^^^^^^^^^^^^^^^^^^
+    | AttributeError: 'NoneType' object has no attribute 'strip'
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\test_processor.py", line 50, in test_lookup_bandwidth_tier_rate_safe
+    |     pytest.fail(f'tier crashed for {value!r}: {type(exc).__name__}: {exc}')
+    | Failed: tier crashed for None: AttributeError: 'NoneType' object has no attribute 'strip'
+    | Falsifying example: test_lookup_bandwidth_tier_rate_safe(
+    |     value=None,  # or any other generated value
+    | )
+    +------------------------------------
+=========================================== Hypothesis Statistics ===========================================
+test_processor.py::test_parse_storage_quota_no_crash:
+
+  - during generate phase (0.29 seconds):
+    - Typical runtimes: ~ 10-134 ms, of which ~ 0-7 ms in data generation
+    - 0 passing examples, 10 failing examples, 0 invalid examples
+    - Found 2 distinct errors in this phase
+
+  - during shrink phase (3.78 seconds):
+    - Typical runtimes: ~ 9-34 ms, of which ~ 0-1 ms in data generation
+    - 0 passing examples, 149 failing examples, 0 invalid examples
+    - Tried 149 shrinks of which 8 were successful
+
+  - Stopped because nothing left to do
+
+
+test_processor.py::test_compute_compression_ratio_safe:
+
+  - during generate phase (0.33 seconds):
+    - Typical runtimes: ~ 29-39 ms, of which ~ 0-1 ms in data generation
+    - 0 passing examples, 10 failing examples, 0 invalid examples
+    - Found 2 distinct errors in this phase
+    - Events:
+      * 10.00%, Retried draw from text(characters(codec='utf-8', categories=('Zl', 'Zp', 'Co', 'Me', 'Pc', 'Zs', 'Pf', 'Lt', 'Pi', 'Nl', 'Pd', 'Sc', 'Cf', 'Sk', 'Sm', 'Nd', 'Lm', 'No', 'Pe', 'Ps', 'Mc', 'So', 'Po', 'Mn', 'Lo', 'Lu', 'Ll', 'Cn', 'Cc')), max_size=5).filter(not_yet_in_unique_list) to satisfy filter
+
+  - during shrink phase (7.44 seconds):
+    - Typical runtimes: ~ 27-50 ms, of which < 1ms in data generation
+    - 0 passing examples, 205 failing examples, 0 invalid examples
+    - Found 2 more distinct errors in this phase
+    - Tried 205 shrinks of which 68 were successful
+
+  - Stopped because nothing left to do
+
+
+test_processor.py::test_lookup_bandwidth_tier_rate_safe:
+
+  - during generate phase (0.43 seconds):
+    - Typical runtimes: ~ 26-134 ms, of which ~ 0-1 ms in data generation
+    - 0 passing examples, 10 failing examples, 0 invalid examples
+    - Found 2 distinct errors in this phase
+
+  - during shrink phase (4.54 seconds):
+    - Typical runtimes: ~ 26-33 ms, of which < 1ms in data generation
+    - 0 passing examples, 142 failing examples, 0 invalid examples
+    - Tried 142 shrinks of which 2 were successful
+
+  - Stopped because nothing left to do
+
+
+========================================== short test summary info ==========================================
+FAILED test_processor.py::test_parse_storage_quota_no_crash - BaseExceptionGroup: Hypothesis found 2 distin...
+FAILED test_processor.py::test_compute_compression_ratio_safe - BaseExceptionGroup: Hypothesis found 4 dist...
+FAILED test_processor.py::test_lookup_bandwidth_tier_rate_safe - BaseExceptionGroup: Hypothesis found 2 dis...
+3 failed, 55 deselected in 18.44s
+[Exit code: 1]

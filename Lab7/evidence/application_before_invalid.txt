@@ -1,0 +1,14 @@
+PS> python processor.py
+Input supplied (one line per prompt): 'bad\n1:0\nUNKNOWN\n'
+==== Running parse_storage_quota ====
+Enter quota (e.g. 500MB, 10GB, 2TB): Traceback (most recent call last):
+  File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\processor.py", line 56, in <module>
+    main()
+  File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\processor.py", line 45, in main
+    print(parse_storage_quota(q_input))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\adiaj\Documents\Codex\2026-11-20\new-chat\outputs\Lab7\processor.py", line 9, in parse_storage_quota
+    value = int(val_str)
+            ^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'B'
+[Exit code: 1]
