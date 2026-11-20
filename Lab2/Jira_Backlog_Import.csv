@@ -1,0 +1,45 @@
+Issue ID,Issue Type,Summary,Description,Priority,Story Points,Epic Name,Epic Link,Sprint,Requirement IDs,Acceptance Criteria,Dependencies
+EPIC1,Epic,Inventory and Shelf Life,Blood bank workflow epic: Inventory and Shelf Life.,High,,EPIC1 Inventory and Shelf Life,,,,,
+EPIC2,Epic,Emergency Requests and Allocation,Blood bank workflow epic: Emergency Requests and Allocation.,High,,EPIC2 Emergency Requests and Allocation,,,,,
+EPIC3,Epic,Donor Matching and Alerts,Blood bank workflow epic: Donor Matching and Alerts.,High,,EPIC3 Donor Matching and Alerts,,,,,
+EPIC4,Epic,Security and Request Tracking,Blood bank workflow epic: Security and Request Tracking.,High,,EPIC4 Security and Request Tracking,,,,,
+US-01,Story,Register blood component units,"As a Blood Bank Manager, I want to register each blood component unit with a unique bag ID and expiry timestamp, so that inventory reflects usable physical stock.
+Requirements: FR-002
+Acceptance criteria: Given a new bag ID, saving valid group, component and expiry creates one unit. Duplicate IDs and expiry before collection time are rejected.
+Dependencies: None",High,5,,EPIC1 Inventory and Shelf Life,Sprint 1,FR-002,"Given a new bag ID, saving valid group, component and expiry creates one unit. Duplicate IDs and expiry before collection time are rejected.",None
+US-02,Story,View current usable stock,"As a Blood Bank Manager, I want to view available units by group and component, so that I can identify shortages quickly.
+Requirements: FR-002; FR-003
+Acceptance criteria: Given a fixture with available, expired, reserved and quarantined units, the count includes only usable available units and updates after a reservation.
+Dependencies: US-01",High,3,,EPIC1 Inventory and Shelf Life,Sprint 1,FR-002; FR-003,"Given a fixture with available, expired, reserved and quarantined units, the count includes only usable available units and updates after a reservation.",US-01
+US-03,Story,Flag expiry and exclude expired units,"As a Blood Bank Manager, I want to see units approaching expiry and exclude expired stock automatically, so that unusable units cannot be issued.
+Requirements: FR-003
+Acceptance criteria: A unit expiring within the configured 24-hour warning window is flagged. At expiry time it is excluded from availability and cannot be reserved. Timestamps are stored in UTC.
+Dependencies: US-01",High,3,,EPIC1 Inventory and Shelf Life,Sprint 1,FR-003,A unit expiring within the configured 24-hour warning window is flagged. At expiry time it is excluded from availability and cannot be reserved. Timestamps are stored in UTC.,US-01
+US-04,Story,Submit an emergency blood request,"As a Emergency Requester, I want to submit the required group, component, quantity and receiving location, so that the bank can start emergency fulfilment.
+Requirements: FR-001; FR-005
+Acceptance criteria: A valid positive integer quantity creates a unique request with emergency status and a current stock check. Invalid quantity or missing receiving location is rejected. A shortage records the unfilled quantity.
+Dependencies: US-02; US-03",High,5,,EPIC2 Emergency Requests and Allocation,Sprint 1,FR-001; FR-005,A valid positive integer quantity creates a unique request with emergency status and a current stock check. Invalid quantity or missing receiving location is rejected. A shortage records the unfilled quantity.,US-02; US-03
+US-05,Story,Reserve units without double allocation,"As a Blood Bank Manager, I want to atomically reserve usable units for a request, so that two requests cannot receive the same bag.
+Requirements: FR-005; NFR-001
+Acceptance criteria: When two concurrent requests compete for one available unit, exactly one reservation succeeds and the other reports a shortage. A forced transaction failure leaves no partial allocation.
+Dependencies: US-04",High,8,,EPIC2 Emergency Requests and Allocation,Sprint 1,FR-005; NFR-001,"When two concurrent requests compete for one available unit, exactly one reservation succeeds and the other reports a shortage. A forced transaction failure leaves no partial allocation.",US-04
+US-06,Story,Maintain eligible donor records,"As a Blood Bank Manager, I want to maintain verified donor eligibility, consent and location records, so that only suitable consenting donors can be considered.
+Requirements: FR-004
+Acceptance criteria: An authorized manager can add or update a donor record. Missing consent, unavailable status, expired eligibility approval or missing location excludes the donor from candidate selection.
+Dependencies: None",High,3,,EPIC3 Donor Matching and Alerts,Sprint 2,FR-004,"An authorized manager can add or update a donor record. Missing consent, unavailable status, expired eligibility approval or missing location excludes the donor from candidate selection.",None
+US-07,Story,Find compatible donors within 10 km,"As a Blood Bank Manager, I want to filter donor candidates by approved compatibility rules, eligibility and distance, so that a shortage reaches relevant nearby donors.
+Requirements: FR-001; FR-004
+Acceptance criteria: Using a test compatibility configuration, include an eligible consenting donor at 10.0 km and exclude donors beyond 10 km, incompatible groups and ineligible donors. Use component-specific manager-approved rules.
+Dependencies: US-04; US-06",High,8,,EPIC3 Donor Matching and Alerts,Sprint 2,FR-001; FR-004,"Using a test compatibility configuration, include an eligible consenting donor at 10.0 km and exclude donors beyond 10 km, incompatible groups and ineligible donors. Use component-specific manager-approved rules.",US-04; US-06
+US-08,Story,Dispatch emergency SMS notifications,"As a Emergency Requester, I want to have a verified shortage trigger SMS alerts to matched donors, so that potential donors can respond quickly.
+Requirements: FR-001
+Acceptance criteria: With the mock SMS provider available, all selected candidates are dispatched alerts within 30 seconds of the verified emergency shortage. Record dispatch timestamps and provider results; retry does not duplicate an alert for the same request and donor. Provider failure is visible and is not marked delivered.
+Dependencies: US-05; US-07; US-10",High,5,,EPIC3 Donor Matching and Alerts,Sprint 2,FR-001,"With the mock SMS provider available, all selected candidates are dispatched alerts within 30 seconds of the verified emergency shortage. Record dispatch timestamps and provider results; retry does not duplicate an alert for the same request and donor. Provider failure is visible and is not marked delivered.",US-05; US-07; US-10
+US-09,Story,Track fulfilment and alert outcomes,"As a Emergency Requester, I want to view the status of my request and its unfilled quantity, so that I know whether further coordination is needed.
+Requirements: FR-005
+Acceptance criteria: The requester sees only their own request status. Authorized managers see unit allocations and notification outcomes. Fulfilled status requires the requested quantity to be issued; shortage remains visible otherwise.
+Dependencies: US-05; US-08; US-10",Medium,3,,EPIC4 Security and Request Tracking,Sprint 2,FR-005,The requester sees only their own request status. Authorized managers see unit allocations and notification outcomes. Fulfilled status requires the requested quantity to be issued; shortage remains visible otherwise.,US-05; US-08; US-10
+US-10,Story,Enforce roles and audit sensitive actions,"As a Blood Bank Manager, I want to restrict sensitive actions and record an audit trail, so that donor information and stock changes remain accountable.
+Requirements: NFR-002
+Acceptance criteria: Unauthenticated access is rejected. A requester cannot modify inventory or read donor contact/location details. A manager can perform authorized actions, with actor, action, entity and timestamp recorded in the audit log.
+Dependencies: US-01; US-04; US-06",High,5,,EPIC4 Security and Request Tracking,Sprint 2,NFR-002,"Unauthenticated access is rejected. A requester cannot modify inventory or read donor contact/location details. A manager can perform authorized actions, with actor, action, entity and timestamp recorded in the audit log.",US-01; US-04; US-06
