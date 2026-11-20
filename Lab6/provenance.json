@@ -1,0 +1,27 @@
+{
+  "student": "Adithya Ajith Pillai",
+  "srn": "PES2UG24AM014",
+  "upstream": "https://github.com/SETAPESU26/L6_L7_12_cloud_storage_tier",
+  "source_tree_sha": "3d3a798a451777c4300706166f7be1c8b3e13859",
+  "source_paths": [
+    "Lab 6/cloud_storage_tier.py",
+    "Lab 6/test_cloud_storage.py"
+  ],
+  "note": "Original source logic retained in Lab6. Text snapshots normalize line endings to LF.",
+  "python": "3.12.10",
+  "pytest": "9.2.0",
+  "coverage": "7.6.12",
+  "hypothesis": "6.125.3",
+  "measurement_environment": "Official tagged coverage.py and Hypothesis Python sources; coverage pure-Python tracer.",
+  "official_dependency_sources": {
+    "coverage": "https://github.com/coveragepy/coveragepy/tree/7.6.12",
+    "hypothesis": "https://github.com/HypothesisWorks/hypothesis/tree/hypothesis-python-6.125.3",
+    "sortedcontainers": "https://github.com/grantjenks/python-sortedcontainers/tree/v2.4.0"
+  },
+  "sha256": {
+    "BranchCoverageTest_PES2UG24AM014_application.py": "38b2f0708eb90adf02a36e1f687742304e9b64da33faf02a8d5d64f1fa513311",
+    "cloud_storage_tier.py": "04febc3f1e0f94e93d20fe0eea70f5fcf7b826153975a345576657b0d8014fab",
+    "CodeCoverageTest_PES2UG24AM014_application.py": "671902fa3076d3817e09d8564661ea53ff2c13693ccdcba3f000a5e15efd9afd",
+    "test_cloud_storage.py": "c4d2f5ccde51fff1b701eac6187570bcebce499ec971c6722a27aeec1d30b16f"
+  }
+}
