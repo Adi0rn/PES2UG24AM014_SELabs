@@ -1,0 +1,7 @@
+Command: python -m flake8 scheduler_system.py
+Exit code: 1
+
+scheduler_system.py:55:80: E501 line too long (80 > 79 characters)
+scheduler_system.py:64:80: E501 line too long (80 > 79 characters)
+scheduler_system.py:91:80: E501 line too long (86 > 79 characters)
+scheduler_system.py:101:80: E501 line too long (84 > 79 characters)
