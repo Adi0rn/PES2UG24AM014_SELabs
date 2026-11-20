@@ -1,0 +1,7 @@
+Command: python -m pylint --persistent=n scheduler_system.py
+Exit code: 0
+
+
+------------------------------------
+Your code has been rated at 10.00/10
+

@@ -1,0 +1,12 @@
+Command: python scheduler_system.py
+Input: Enter (default 10-12)
+Exit code: 0
+
+Booking rejected: Board-1 double-booked at 09-11
+Booking rejected: Hours must satisfy 00 <= start < end <= 24.
+Booking rejected: Time slot must be a string such as 09-11.
+Unknown cancellation: False
+Slot for Board-2, like 10-12 (Enter for 10-12): Slot length: 2
+2026-11-20T14:33:54.090972 Board-1 double-booked at 09-11
+Equipment capacity: {'projector': 2, 'microphone': 4, 'webcam': 1}
+Reservations: {1: {'room': 'Board-1', 'slot': '09-11', 'equipment': []}, 2: {'room': 'Board-2', 'slot': '10-12', 'equipment': ['projector', 'webcam']}}

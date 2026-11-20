@@ -1,0 +1,10 @@
+{
+  "upstream_repository": "https://github.com/SETAPESU26/L5_12_room_scheduler",
+  "upstream_commit": "6bce27513c75c5750f1f907e90a97c9ed7907418",
+  "stages": {
+    "before": "a848e1a43f3bb61a42f2b17cc4c72b5e1cf1bd68a198aa058509087a48d4f1e6",
+    "bandit": "8734fcac8c7d90ac47165579a25ea2378076fd6a300d9e5f86df5f7eb35a17cb",
+    "pylint": "97751caf6ddf1fdfac0a90e054bf7f592ff2a66d7eb114835f1e16dd4433ca02",
+    "final": "1b867d098788dd88fae5d45c9ac0a39d7457a54cd2f899d50db9dec0dd8c9a89"
+  }
+}

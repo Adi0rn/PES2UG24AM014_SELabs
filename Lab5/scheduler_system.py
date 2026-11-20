@@ -52,7 +52,8 @@ class RoomScheduler:
         """Check stock against overlapping bookings, including duplicates."""
         unknown = requested.keys() - self.equipment_pool.keys()
         if unknown:
-            raise ValueError(f"Unknown equipment: {', '.join(sorted(unknown))}")
+            names = ", ".join(sorted(unknown))
+            raise ValueError(f"Unknown equipment: {names}")
         for hour in range(start, end):
             used = Counter()
             for reservation in self.reservations.values():
@@ -61,7 +62,9 @@ class RoomScheduler:
                     used.update(reservation["equipment"])
             for item, quantity in requested.items():
                 if used[item] + quantity > self.equipment_pool[item]:
-                    raise ValueError(f"Insufficient {item} at hour {hour:02d}.")
+                    raise ValueError(
+                        f"Insufficient {item} at hour {hour:02d}."
+                    )
 
     def schedule_room(self, room_id, time_slot, equipment_list=None):
         """Validate a booking fully before storing it; return its unique ID."""
@@ -88,7 +91,7 @@ class RoomScheduler:
         return reservation_id
 
     def cancel_reservation(self, reservation_id):
-        """Remove a booking; return False for an unknown ID without masking errors."""
+        """Remove a booking, returning False when the ID is unknown."""
         return self.reservations.pop(reservation_id, None) is not None
 
     def export_schedule(self, filename="schedule.json"):
@@ -98,7 +101,7 @@ class RoomScheduler:
             stream.write("\n")
 
     def log_conflicts(self, filename="conflicts.log"):
-        """Append pending conflicts and display the log without invoking a shell."""
+        """Append pending conflicts and display the log without a shell."""
         path = Path(filename)
         with path.open("a", encoding="utf-8") as stream:
             for conflict in self.conflicts:
